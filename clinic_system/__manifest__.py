@@ -13,8 +13,11 @@
         'resource',
     ],
     'data': [
+        'data/sequence.xml',
         'views/customer_booking_view.xml',
         'security/ir.model.access.csv',
+        'security/user_group.xml',
+        'data/record.xml'
     ],
     'license':'LGPL-3',
     'installable':True,

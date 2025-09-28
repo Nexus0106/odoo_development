@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+        <record id="sequence_booking" model="ir.sequence">
+            <field name="name">Booking System</field>
+            <field name="code">booking.sequence</field>
+            <field name="prefix">B</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

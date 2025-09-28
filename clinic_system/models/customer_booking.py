@@ -21,6 +21,35 @@ class CustomerBooking(models.Model):
     note = fields.Html('Note')
     image = fields.Binary('Image')
     pdf_file = fields.Binary('File')
+    state = fields.Selection([
+        ('draft','Draft'),
+        ('confirm','Confirm'),
+                              ],'State',default='draft')
+
+    def action_confirm(self):
+        self.state = 'confirm'
+
+    # create, write, unlink
+    @api.model
+    def create(self,vals):
+        vals['name'] = self.env['ir.sequence'].next_by_code('booking.sequence')
+        res = super().create(vals)
+        # import pdb
+        # pdb.set_trace()
+        # print('Testing')
+        return res
+
+    @api.model
+    def update_confirm(self):
+        booking_ids = self.env['customer.booking'].search([])
+        for rec in booking_ids:
+            female_employee = rec.employee_ids.filtered(lambda e:e.gender == 'female')
+            if female_employee:
+                rec.action_confirm()
+            # elif not female_employee:
+            # else
+
+
 
 
 
