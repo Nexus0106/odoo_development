@@ -27,6 +27,7 @@
                             <field name="client_name" invisible="1"/>
                             <field name="phone" readonly="state in ['confirm']"/>
                             <field name="number_of_people" readonly="1"/>
+                            <field name="company_id"/>
                         </group>
                         <group name="group_right">
                             <field name="date" string="Booking Date"/>
@@ -45,6 +46,11 @@
                                     <field name="total_price"/>
                                 </tree>
                             </field>
+                            <div name="total">
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="total_amount"/>
+                                </group>
+                            </div>
                         </page>
                         <page string="Note" name="line">
                             <field name="note"/>

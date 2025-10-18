@@ -25,6 +25,14 @@ class CustomerBooking(models.Model):
         ('draft','Draft'),
         ('confirm','Confirm'),
                               ],'State',default='draft')
+    total_amount = fields.Float('Total Amount',compute='compute_total_amount')
+    company_id = fields.Many2one('res.company',default=lambda self:self.env.company)
+
+    @api.depends('booking_line_ids.total_price')
+    def compute_total_amount(self):
+        for rec in self:
+            total_price = rec.booking_line_ids.mapped('total_price')
+            rec.total_amount = 0
 
     def action_confirm(self):
         self.state = 'confirm'
@@ -69,4 +77,5 @@ class BookingLines(models.Model):
 
     @api.depends('qty','unit_price')
     def change_total_price(self):
-        self.total_price = (self.qty * self.unit_price) + 1000
+        for rec in self:
+            rec.total_price = (rec.qty * rec.unit_price) + 1000

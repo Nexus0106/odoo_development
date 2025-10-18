@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+        <record id="clinic_system_wizard_form" model="ir.ui.view">
+            <field name="name">clinic.system.form</field>
+            <field name="model">clinic.system.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="doctor_ids"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_clinic_system_wizard" model="ir.actions.act_window">
+            <field name="name">Clinic System Wizard</field>
+            <field name="res_model">clinic.system.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_clinic_system_wizard"
+                  name = "Clinic System Wizard"
+                  action="action_clinic_system_wizard"
+                  parent="clinic_system.menu_client_info"
+                  sequence="10"/>
+
+    </data>
+</odoo>

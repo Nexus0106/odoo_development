@@ -1,0 +1,76 @@
+<odoo>
+    <!--Header Template-->
+    <template id="customer_booking_report_header">
+        <div class="header" style="width:100%">
+            <h1>Customer Booking</h1>
+            <h4><span t-field="o.company_id"/></h4>
+        </div>
+    </template>
+
+    <!--Body Template-->
+    <template id="customer_booking_report_body">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <table class="table table-sm" style="border-collapse:collapse;border:1px solid transparent;">
+                    <tr style="width:100%;">
+                        <td style="width:10%">Client Name:</td>
+                        <td style="width:90%"><span t-field="o.partner_id"/></td>
+                    </tr>
+                    <t t-if="o.partner_id.phone">
+                        <tr style="width:100%;">
+                            <td style="width:10%">Client Phone:</td>
+                            <td style="width:90%"><span t-esc="o.partner_id.phone"/></td>
+                        </tr>
+                    </t>
+                    <tr style="width:100%;">
+                        <td style="width:10%">Client Email:</td>
+                        <td style="width:90%"><span t-esc="o.partner_id.email"/></td>
+                    </tr>
+                    <tr style="width:100%;">
+                        <td style="width:10%">Date:</td>
+                        <td style="width:90%"><span t-field="o.date"/></td>
+                    </tr>
+                </table>
+                <table class="table table-sm" style="border-collapse:collapse;">
+                    <thead>
+                        <tr style="width:100%;">
+                            <th>No.</th>
+                            <th>Product</th>
+                            <th>Qty</th>
+                            <th>Unit Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="number" t-value="1"/>
+                        <t t-foreach="o.booking_line_ids" t-as="line">
+                            <tr style="width:100%;height:35px;">
+                                <td style="text-align:center;"><span t-esc="number"/></td>
+                                <td><span t-field="line.product_id"/></td>
+                                <td style="text-align:center;"><span t-field="line.qty"/></td>
+                                <td style="text-align:right;"><span t-field="line.unit_price"/></td>
+                                <td style="text-align:right;"><span t-field="line.total_price"/></td>
+                            </tr>
+                            <t t-set="number" t-value="number+1"/>
+                        </t>
+                    </tbody>
+                    <tr>
+                        <td colspan="4" style="text-align:right;">Total Amount</td>
+                        <td style="text-align:right;"><span t-field="o.total_amount"/></td>
+                    </tr>
+
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <!--Main Template-->
+    <template id="report_customer_booking">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="clinic_system.customer_booking_report_header"/>
+                <t t-call="clinic_system.customer_booking_report_body" t-lang="lang"/>
+            </t>
+        </t>
+    </template>
+</odoo>
