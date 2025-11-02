@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template id="template" xml:space="preserve">
+<!--    First-->
+    <t t-name="clinic_system.orderLineCount">
+        <a t-on-click="showPopup" t-attf-class="fa fa-info-circle"/>
+    </t>
+
+<!--    Second-->
+    <t t-name="clinic_system.OrderLineCountPopOver">
+        <div>
+            <table class="table table-borderless table-sm">
+                <br/>
+                <tr>
+                    <td><h5>Order Line Count:</h5></td>
+                    <td><h6><span t-out="props.record.data.order_line_count"/></h6></td>
+                </tr>
+                <tr>
+                    <td><h5>Number Of Qty:</h5></td>
+                    <td><h6><span t-out="props.record.data.num_qty"/></h6></td>
+                </tr>
+            </table>
+        </div>
+    </t>
+</template>

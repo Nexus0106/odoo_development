@@ -27,12 +27,19 @@ class CustomerBooking(models.Model):
                               ],'State',default='draft')
     total_amount = fields.Float('Total Amount',compute='compute_total_amount')
     company_id = fields.Many2one('res.company',default=lambda self:self.env.company)
+    order_line_count = fields.Integer('Order Line Count', compute='compute_line_count',store=True)
+    num_qty = fields.Integer('Number Qty', compute='compute_line_count',store=True)
+
+    @api.depends('booking_line_ids')
+    def compute_line_count(self):
+        for rec in self:
+            rec.order_line_count = len(rec.booking_line_ids)
+            rec.num_qty = sum(rec.booking_line_ids.mapped('qty'))
 
     @api.depends('booking_line_ids.total_price')
     def compute_total_amount(self):
         for rec in self:
-            total_price = rec.booking_line_ids.mapped('total_price')
-            rec.total_amount = 0
+            rec.total_amount = sum(rec.booking_line_ids.mapped('total_price'))
 
     def action_confirm(self):
         self.state = 'confirm'

@@ -71,10 +71,13 @@
         <field name="arch" type="xml">
             <tree string="Client Booking">
                 <field name="name"/>
-                <field name="client_name"/>
+                <field name="partner_id"/>
                 <field name="phone"/>
                 <field name="date" string="Booking Date"/>
                 <field name="booking_time"/>
+                <field name="order_line_count" column_invisible="1"/>
+                <field name="num_qty" column_invisible="1"/>
+                <widget name="order_line_count_widget"/>
             </tree>
         </field>
     </record>

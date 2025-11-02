@@ -23,6 +23,12 @@
         'reports/clinic_system_report.xml',
         'reports/sale_order_pdf_inherit.xml',
     ],
+    'assets':{
+        'web.assets_backend':[
+            '/clinic_system/static/src/js/order_line_widget.js',
+            '/clinic_system/static/src/xml/order_line_widget.xml',
+        ]
+    },
     'license':'LGPL-3',
     'installable':True,
     'auto_install':False,
