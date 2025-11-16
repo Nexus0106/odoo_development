@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="portal_notice_dashboard_activities" name="Portal Layout: Notice" inherit_id="portal.portal_breadcrumbs">
+            <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+                <li t-if="page_name=='notice'" class="breadcrumb-item">Notice</li>
+            </xpath>
+        </template>
+        <template id="display_notice_dashboard" name="Notice Dashboard">
+            <t t-call="website.layout">
+                <style>
+                    body{
+                        background:linear-gradient(135deg,#f9f9f9,#e6f7ff);
+                        min-height:100vh;
+                    }
+                    h2.text-center{
+                        font-weight:700;
+                        margin-bottom:2rem;
+                        animation:fadeInDown 0.6s ease-out;
+                    }
+                    .card{
+                        border:none;
+                        border-radius:1rem;
+                        box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                        background:#fff;
+                        overflow:hidden;
+                    }
+                    .card:hover{
+                        transform:translateY(-6px);
+                        box-shadow:0 12px 25px rgba(0,0,0,0.15);
+                    }
+                    .card-img-top{
+                        border-top-left-radius:1rem;
+                         border-top-right-radius:1rem;
+                        transition: transform 0.3s ease;
+                    }
+                    .card-body{
+                        padding:1rem 1.2rem;
+                        transition: background 0.3s ease;
+                    }
+                </style>
+                <div id="wrap">
+                    <div class="container">
+                        <h2 class="text-center">Notice Board</h2>
+                        <div class="row">
+                            <t t-foreach="notices" t-as="notice">
+                                <div class="card">
+                                    <t t-if="notice.image">
+                                        <img t-attf-src="data:image/png;base64,{{notice.image}}"
+                                         class="card-img-top"
+                                         style="height:200px; object-fix:cover;"/>
+                                    </t>
+                                    <div class="card-body">
+                                        <h5>
+                                            <span t-field="notice.name"/>
+                                        </h5>
+                                        <p>
+                                            <span t-field="notice.summary"/>
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="notice_menu" model="website.menu">
+        <field name="name">Notice Dashboard</field>
+        <field name="url">/my/notice-dashboard</field>
+    </record>
+</odoo>

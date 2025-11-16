@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_notice_dashboard,access_notice_dashboard,model_notice_dashboard,,1,1,1,1
