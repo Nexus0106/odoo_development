@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="over_limit_record_tree" model="ir.ui.view">
+        <field name="name">over.limit.record.tree</field>
+        <field name="model">over.limit.record</field>
+        <field name="arch" type="xml">
+            <tree create="false" edit="false" editable="bottom">
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="limit_amount"/>
+                <field name="booking_amount"/>
+                <field name="over_amount"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_over_limit" model="ir.actions.act_window">
+        <field name="name">Over Limit Record</field>
+        <field name="res_model">over.limit.record</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <menuitem id="menu_over_limit"
+              name ="Over Limit Record"
+              sequence="10"
+              parent="clinic_system.menu_client_info"
+              action="action_over_limit"
+    />
+</odoo>

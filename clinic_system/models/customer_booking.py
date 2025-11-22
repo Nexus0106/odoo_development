@@ -42,6 +42,15 @@ class CustomerBooking(models.Model):
             rec.total_amount = sum(rec.booking_line_ids.mapped('total_price'))
 
     def action_confirm(self):
+        company = self.env.company
+        login_user = self.env.user
+        if self.total_amount > company.limit_amount:
+            self.env['over.limit.record'].create({
+                'name':self.name,
+                'user_id':login_user.id,
+                'limit_amount':company.limit_amount,
+                'booking_amount':self.total_amount
+            })
         self.state = 'confirm'
 
     # create, write, unlink

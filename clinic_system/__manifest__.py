@@ -12,6 +12,7 @@
         'product',
         'resource',
         'sale',
+        'base_setup',
     ],
     'data': [
         'data/sequence.xml',
@@ -22,6 +23,8 @@
         'reports/report.xml',
         'reports/clinic_system_report.xml',
         'reports/sale_order_pdf_inherit.xml',
+        'views/res_config_setting.xml',
+        'views/over_limit_record.xml',
     ],
     'assets':{
         'web.assets_backend':[

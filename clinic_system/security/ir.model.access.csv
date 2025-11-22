@@ -3,3 +3,4 @@ access_client_booking,access_client_booking,clinic_system.model_customer_booking
 access_client_booking_lines,access_client_booking_lines,clinic_system.model_booking_lines,base.group_user,1,1,1,1
 access_client_booking_all,access_client_booking_all,clinic_system.model_customer_booking,,1,1,1,0
 access_client_booking_lines_all,access_client_booking_lines_all,clinic_system.model_booking_lines,,1,1,1,0
+access_over_limit_record, access_over_limit_record,clinic_system.model_over_limit_record,base.group_user,1,1,1,1
